@@ -21,41 +21,42 @@ namespace lesson3
             };
 
             System.Console.WriteLine("" +
-            "1 Кола - 10 сомон\n" +
-            "2 Сникерс - 7 сомон\n" +
-            "3 Марс - 9 сомон\n" +
-            "4 M&Ms - 4 сомон\n" +
-            "5 Чипсы - 14 сомон\n" +
-            "6 Выход\n" +
+            "1 Кола - 10 сомон \n" +
+            "2 Сникерс - 7 сомон \n" +
+            "3 Марс - 9 сомон \n" +
+            "4 M&Ms - 4 сомон \n" +
+            "5 Чипсы - 14 сомон \n" +
+            "6 Выход \n" +
             "Ваш выбор (1-6):");
 
             int choice = int.Parse(Console.ReadLine());
 
             // goto start; //идти к метке "start"
-            switch (choice)
+            switch(choice)
             {
                 case 1:
+                {
+                    if(userBalance - 10 >= 0)
                     {
-                        if (userBalance - 10 >= 0)
-                        {
-                            basket += "Кола,";
-                            userBalance -= 10;
-                        }
-                        else
-                        {
-                            System.Console.WriteLine(erroBalanceMessage);
-                            goto End;
-                        }
-                        System.Console.Write("Вы хотите продолжить? д/н:");
+                        basket += "Kola, ";
+                        userBalance -= 10;
+                    }
+                    else
+                    {
+                        System.Console.Write("Вы хотите продолжить? y/n:");
                         if (Console.ReadLine().ToLower() == "д") goto start;
                         else goto End;
                     }
-                    break;
-                case 6: goto End;
+                }
+                break;
+
+                case 6:
+                    goto End;
+                break;
                 default: goto start;
                 break;
             }
-
+            
         End:
             System.Console.WriteLine($"Ваши покупки:{basket}\nВаш баланс:{userBalance}");
             Console.ReadKey();
